@@ -14,18 +14,18 @@ document.getElementById('placaForm').addEventListener('submit', async function(e
     const db = firebase.database();
     const referencia = db.ref('veiculos');
 
-    // Verificar se a placa já existe
-    const placaSnapshot = await referencia.orderByChild('placa').equalTo(placa).once('value');
-    if (placaSnapshot.exists()) {
-        document.getElementById('mensagem').innerText = 'Erro: Placa já cadastrada.';
-        document.getElementById('mensagem').style.color = 'red';
-        return;
-    }
-
     // Verificar se o telefone já existe
     const telefoneSnapshot = await referencia.orderByChild('telefone').equalTo(telefone).once('value');
     if (telefoneSnapshot.exists()) {
         document.getElementById('mensagem').innerText = 'Erro: Telefone já cadastrado.';
+        document.getElementById('mensagem').style.color = 'red';
+        return;
+    }
+
+    // Verificar se a placa já existe
+    const placaSnapshot = await referencia.orderByChild('placa').equalTo(placa).once('value');
+    if (placaSnapshot.exists()) {
+        document.getElementById('mensagem').innerText = 'Erro: Placa já cadastrada.';
         document.getElementById('mensagem').style.color = 'red';
         return;
     }
