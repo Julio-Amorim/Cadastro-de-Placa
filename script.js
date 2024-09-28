@@ -36,6 +36,7 @@ document.getElementById('placaForm').addEventListener('submit', async function(e
             document.getElementById('mensagem').innerText = 'Veículo cadastrado com sucesso!';
             document.getElementById('mensagem').style.color = 'green';
             document.getElementById('placaForm').reset();
+            
         })
         .catch((error) => {
             document.getElementById('mensagem').innerText = 'Erro ao cadastrar: ' + error.message;
